@@ -74,6 +74,7 @@
 <script>
 import hljs from "highlight.js";
 import helper from "../helper.js";
+import moment from "../moment.min.js";
 import CryptoJS from "crypto-js";
 import LANGUAGE_REPLACEMENTS from '../assets/data/langReplacements'
 import {currentThemeVars} from "@/main";
@@ -210,6 +211,14 @@ export default {
             }
 
             this.showLineNums = true
+
+            var lines = msg.split("\n"), parts = [];
+            for (var i = 0; i < lines.length; i++) {
+                parts.push(lines[i].replace(/[0-9]+\s/i, function($1) {
+                    return moment.unix($1).format('hh:mm:ss A') + " | "
+                }));
+            }
+            contents = parts.join("\n");
 
             if (this.language === null)
                 this.content = hljs.highlightAuto(contents).value
