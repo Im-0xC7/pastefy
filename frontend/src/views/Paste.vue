@@ -74,7 +74,7 @@
 <script>
 import hljs from "highlight.js";
 import helper from "../helper.js";
-import moment from "../moment.min.js";
+import moment from "moment";
 import CryptoJS from "crypto-js";
 import LANGUAGE_REPLACEMENTS from '../assets/data/langReplacements'
 import {currentThemeVars} from "@/main";
